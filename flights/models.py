@@ -27,6 +27,10 @@ class Flight(models.Model):
         auto_now_add=True,
         verbose_name='Created At'
     )
+    flight_nunber = models.CharField(
+        max_length=100,
+        verbose_name='Flight Number'
+    )
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name='Updated At'
@@ -49,3 +53,11 @@ class Booking(models.Model):
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     booked = models.BooleanField(default=False)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Created At'
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Updated At'
+    )
