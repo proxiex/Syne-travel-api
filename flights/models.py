@@ -3,17 +3,15 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# Create your models here.
-
 
 class Airline(models.Model):
     name = models.CharField(
         max_length=100,
-        verbose_name='To Location'
+        verbose_name='Airline Name'
     )
     flight_number = models.CharField(
         max_length=100,
-        verbose_name='To Location'
+        verbose_name='Flight Numbrer'
     )
 
 
