@@ -7,21 +7,14 @@ class FlightSerializer(serializers.ModelSerializer):
     flight serializer
     """
     class Meta:
-        extra_kwargs = {
-            'no_of_seats': {'write_only': True}
-        }
+        # extra_kwargs = {
+        #     'no_of_seats': {'write_only': True}
+        # }
 
         model = models.Flight
-        fields = [
-            'id',
-            'from_location',
-            'to_location',
-            'departure_time',
-            'arrival_time',
-            'airline',
-            'no_of_seats',
-            'price',
-        ]
+        fields = (
+            'id', 'from_location', 'to_location', 'departure_time',
+            'arrival_time', 'airline', 'no_of_seats', 'price',)
 
     def validate(self, data):
         """

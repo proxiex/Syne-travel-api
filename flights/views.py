@@ -6,6 +6,6 @@ class FlightViewSet(viewsets.ModelViewSet):
     """
     Flight model viewSet
     """
-    queryset = models.Flight.objects.all()
     serializer_class = serializers.FlightSerializer
-    permission_classes = [permissions.IsSuperUserOrReadOnly]
+    queryset = models.Flight.objects.all()
+    permission_classes = [permissions.IsSuperUserOrReadOnly, ]
