@@ -20,13 +20,19 @@ from django.conf.urls import include
 from flights.views import FlightViewSet
 
 from rest_framework import routers
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
 
+schema_view = get_schema_view(
+    title='Syne Travel API',
+    renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer],)
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'flights', FlightViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/flight/', include(router.urls)),
     path('api/v1/users/', include('users.urls')),
-    path('api/v1/', include((router.urls, 'flights'), namespace='apiv1')),
+    path('swagger/', schema_view, name="api doc"),
 ]
